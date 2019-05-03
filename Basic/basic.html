@@ -22,28 +22,47 @@
 
     </div>
     <script>
+    // array to hold items
     let currentArray = [];
 
     function addItem() {
+        // create a variable to hold what the user entered
         let item = document.getElementById("item");
-        currentArray.push(item);
-        console.log(currentArray);
+
+        // add the item to the array
+        currentArray.push(item.value);
+
+        // data check
+        console.table(currentArray);
+
+        // display the list
+        displayUnsortedList(currentArray);
+        
+    }
+
+    function displayUnsortedList(currentArray) {
+        // create p element
         let arrayData = document.createElement('p');
+
+        // place what is in the array to the p element
         for(let i in currentArray)
         {
-            console.log(currentArray[i].value)
-            arrayData = currentArray[i].value;
+            arrayData = currentArray[i];
         }
         
-        document.querySelector("#unsortedArray").append(arrayData);
-
         // need to add a break to each line
-        let space = document.createElement("br");
-        document.querySelector("#unsortedArray").append(space);
+        let newLine = document.createElement("br");
+
+        // append the item to the div to be displayed to the user
+        document.querySelector("#unsortedArray").append(arrayData, newLine);
+
     }
 
     function clearList() {
+        // set the array to empty
         currentArray = [];
+
+        // refresh the page
         document.location.reload(true);
     }
     </script>
