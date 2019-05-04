@@ -16,7 +16,7 @@
     <div id="unsortedArray">
         <h4>Current List</h4>
     </div>
-    <br><button type="button">Sort List</button>
+    <br><button type="button" id="sortButton" onclick="sortArray()">Sort List</button>
     <div id="sortedArray">
 
     </div>
@@ -38,25 +38,36 @@
         console.table(currentArray);
 
         // display the list
-        displayUnsortedList(currentArray);
+        displayList(currentArray, task="displayUnsorted");
         
     }
 
-    function displayUnsortedList(currentArray) {
-        // create p element
-        let arrayData = document.createElement('p');
+    function displayList(listArray, task) {
 
-        // place what is in the array to the p element
-        for(let i in currentArray)
+        // TODO: add case-insensitive sort functionality
+        // display sorted array if sort button was clicked
+        if(task == "displaySorted")
         {
-            arrayData = currentArray[i];
+            document.querySelector("#sortedArray").append(listArray);
         }
-        
-        // need to add a break to each line
-        let newLine = document.createElement("br");
+        else 
+        {
+            // create p element
+            let arrayData = document.createElement('p');
 
-        // append the item to the div to be displayed to the user
-        document.querySelector("#unsortedArray").append(arrayData, newLine);
+            // place what is in the array to the p element
+            for(let i in listArray)
+            {
+                arrayData = listArray[i];
+            }
+        
+            // need to add a break to each line
+            let newLine = document.createElement("br");
+
+            // append the item to the div to be displayed to the user
+            console.log(task);
+            document.querySelector("#unsortedArray").append(arrayData, newLine);
+        }
 
     }
 
@@ -69,7 +80,14 @@
     }
 
     function sortArray() {
-        
+        // data check the unsorted array
+        console.table("Sort Function" + currentArray);
+
+        // sort the array
+        let sortedArray = currentArray.sort();
+
+        // display the sorted array
+        displayList(sortedArray, task = "displaySorted");
     }
     </script>
 </body>
