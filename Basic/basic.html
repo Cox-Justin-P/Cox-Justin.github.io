@@ -48,6 +48,10 @@
         // display sorted array if sort button was clicked
         if(task == "displaySorted")
         {
+            // clear the div
+            document.querySelector("#sortedArray").innerHTML = '';
+
+            // display the information
             for(let i in listArray) {
                 // new line
                 let newLine = document.createElement("br");
@@ -93,7 +97,6 @@
 
         // data check the unsorted array
         console.table("Sort Function" + capitalizedArray);
-
 
         // sort the array
         let sortedArray = capitalizedArray.sort();
