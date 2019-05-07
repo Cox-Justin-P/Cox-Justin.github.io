@@ -18,7 +18,7 @@
     </div>
     <br><button type="button" id="sortButton" onclick="sortArray()">Sort List</button>
     <div id="sortedArray">
-
+        <h4>Sorted List</h4>
     </div>
     <div id="code">
         
@@ -48,7 +48,12 @@
         // display sorted array if sort button was clicked
         if(task == "displaySorted")
         {
-            document.querySelector("#sortedArray").append(listArray);
+            for(let i in listArray) {
+                // new line
+                let newLine = document.createElement("br");
+                // append array item with new line
+                document.querySelector("#sortedArray").append(listArray[i], newLine);
+            }
         }
         else 
         {
@@ -80,11 +85,18 @@
     }
 
     function sortArray() {
+        // capitalize the array to be used with the sort method
+        let capitalizedArray = [];
+        for(let i in currentArray) {
+            capitalizedArray[i] = currentArray[i].charAt(0).toUpperCase() + currentArray[i].slice(1);
+        }
+
         // data check the unsorted array
-        console.table("Sort Function" + currentArray);
+        console.table("Sort Function" + capitalizedArray);
+
 
         // sort the array
-        let sortedArray = currentArray.sort();
+        let sortedArray = capitalizedArray.sort();
 
         // display the sorted array
         displayList(sortedArray, task = "displaySorted");
