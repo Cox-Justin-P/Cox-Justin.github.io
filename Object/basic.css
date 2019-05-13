@@ -1,0 +1,33 @@
+#header {
+    color: cornflowerblue;
+}
+
+#budget-button {
+    border: none;
+    color: white;
+    background-color: rgb(158, 156, 156);
+    font-size: 20px;
+    border-radius: 6px;
+}
+
+#budget-button:hover {
+    background-color: rgb(75, 75, 75);
+}
+
+#content {
+    width: 600px;
+    height: 300px;
+    display: flex;
+}
+
+#laptop-specs {
+    width: 300px;
+    height: 300px;
+    display: flex;
+}
+
+#laptop-budget {
+    width: 300px;
+    height: 300px;
+    display: flex;
+}

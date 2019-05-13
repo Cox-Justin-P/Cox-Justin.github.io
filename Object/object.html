@@ -5,28 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>JavaScript Objects</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="basic.css">
 </head>
 <body>
+    <div id="header">
+        <h1>Customize Your Laptop</h1>
+    </div>
+    <button type="button" id="budget-button" onclick="getBudget()">Start</button>
+    <div id="content">
+        <div id="laptop-specs">
+            <h3>Specs</h3>
+        </div>
+        <div id="laptop-budget">
+            <h3>Budget</h3>
+        </div>
+    </div>
     <script>
-        // practice creating JavaScript objects
-
-        // using the object() constructor
-        //let myLaptop = new Object();
-
-        // using object.create() method
-        //let myLaptop = Object.create(null);
-
-        // using brackets
-        //let myLaptop = {};
-
-        // function constructor
-        let Obj = function(name) {
-            this.name = name;
+        function getBudget() {
+            let budget = window.prompt("Please Enter Your Budget");
         }
-        let myLaptop = new Obj("This is my laptop");
-        console.log(myLaptop.name);
-
-
     </script>
 </body>
 </html>
