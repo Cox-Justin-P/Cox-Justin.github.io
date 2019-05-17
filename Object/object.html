@@ -5,9 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>JavaScript Objects</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="basic.css">
 </head>
 <body>
+    <div id="header">
+        <h1>Customize Your Laptop</h1>
+    </div>
+    <button type="button" id="budget-button" onclick="getBudget()">Start</button>
+    <div id="content">
+        <div id="laptop-specs">
+            <h3>Specs</h3>
+        </div>
+        <div id="laptop-budget">
+            <h3>Budget</h3>
+        </div>
+    </div>
     <script>
+<<<<<<< HEAD
         let hotel = {
             name: 'Le Jewstin',
             rooms: 15,
@@ -23,6 +37,11 @@
         document.write("There are " + hotel.checkAvailability() + " room(s) available");
 
 
+=======
+        function getBudget() {
+            let budget = window.prompt("Please Enter Your Budget");
+        }
+>>>>>>> 37464d8e91a767c88989d54d0a0984770590ef0f
     </script>
 </body>
 </html>
