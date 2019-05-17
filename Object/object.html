@@ -8,23 +8,19 @@
 </head>
 <body>
     <script>
-        // practice creating JavaScript objects
+        let hotel = {
+            name: 'Le Jewstin',
+            rooms: 15,
+            booked: 14,
+            gym: true,
+            roomTypes: ['twin', 'double', 'suite'],
+            checkAvailability: function() {
+                return this.rooms - this.booked;
+            }
+        };
 
-        // using the object() constructor
-        //let myLaptop = new Object();
-
-        // using object.create() method
-        //let myLaptop = Object.create(null);
-
-        // using brackets
-        //let myLaptop = {};
-
-        // function constructor
-        let Obj = function(name) {
-            this.name = name;
-        }
-        let myLaptop = new Obj("This is my laptop");
-        console.log(myLaptop.name);
+        document.write("The hotel is " + hotel.name);
+        document.write("There are " + hotel.checkAvailability() + " room(s) available");
 
 
     </script>
