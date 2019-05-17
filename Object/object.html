@@ -1,20 +1,36 @@
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>JavaScript Objects</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="basic.css">
+    <link rel="stylesheet" type="text/css" href="object.css">
 </head>
 <body>
     <div id="header">
         <h1>Customize Your Laptop</h1>
     </div>
-    <button type="button" id="budget-button" onclick="getBudget()">Start</button>
+    <button type="button" id="budget-button" onclick="getBudget()">Add Budget</button>
     <div id="content">
         <div id="laptop-specs">
             <h3>Specs</h3>
+            <p>Ram</p>
+            <select>
+                <!-- TODO: ADD COST FOR SPECS-->
+                <option value="default">Pick One</option>
+                <option value="cost">4 GB</option>
+                <option value="cost">8 GB</option>
+                <option value="cost">16 GB</option>
+            </select>
+            <p>Hard Drive</p>
+            <select>
+                <!-- TODO: ADD SSD AND HD PRICING -->
+                <option value="default">Pick One</option>
+                <option value="cost">128 GB</option>
+                <option value="cost">256 GB</option>
+                <option value="cost">512 GB</option>
+            </select>
         </div>
         <div id="laptop-budget">
             <h3>Budget</h3>
@@ -22,7 +38,25 @@
     </div>
     <script>
         function getBudget() {
+            // prompt
             let budget = window.prompt("Please Enter Your Budget");
+
+            // pass budget to be updated
+            updateBudget(budget);
+        }
+
+        function updateBudget(budget) {
+            // check the value
+            console.log("Budget is: " + budget);
+
+            // create html element
+            let currentBudget = document.createElement('p');
+
+            // assign the value
+            currentBudget = budget;
+
+            // append the value
+            document.querySelector("#laptop-budget").append('$' + currentBudget);
         }
     </script>
 </body>
