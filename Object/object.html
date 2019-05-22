@@ -23,39 +23,34 @@
                 <option value="100">8 GB</option>
                 <option value="150">16 GB</option>
             </select>
-            <button type="button" onclick="updateBudget()">Add</button>
             <p>Hard Drive</p>
-            <select id="hardrive">
+            <select id="harddrive">
                 <!-- TODO: ADD SSD AND HD PRICING -->
                 <option value="0">Pick One</option>
                 <option value="50">128 GB</option>
                 <option value="100">256 GB</option>
                 <option value="150">512 GB</option>
             </select>
-            <button type="button">Add</button>
         </div>
+        <br><button type="button" onclick="updateBudget()">Add Specs</button><br>
         <h3>Budget</h3>
         <div id="laptop-budget">
         </div>
+        <br><button type="button" onclick="completePurchase()">Purchase</button>
     </div>
     <script>
 
-        let budget = 0;
+        // create the object
+        let laptop = new Object();
+        laptop.budget = 0;
+
         function promptBudget() {
             // prompt
-            budget = window.prompt("Please Enter Your Budget");
+            laptop.budget = window.prompt("Please Enter Your Budget");
 
-            initializeBudget(budget);
+            initializeBudget(laptop.budget);
 
-            return budget;
-        }
-
-        function getBudget() {
-            // prompt
-            let budget = window.prompt("Please Enter Your Budget");
-
-            // pass budget to be initialized
-            initializeBudget(budget);
+            return laptop.budget;
         }
 
         function initializeBudget(budget) {
@@ -72,12 +67,39 @@
             document.querySelector("#laptop-budget").append('$' + currentBudget);
 
             console.log(currentBudget);
-            updateBudget(budget);
         }
 
         function updateBudget() {
+            // get select values
             let ramCost = document.getElementById("ram").value;
-            console.log("Budget is now: " + (budget - ramCost));
+            let harddriveCost = document.getElementById("harddrive").value;
+
+            //get select text
+            let ramOption = ram.options[ram.selectedIndex];
+            let harddriveOption = harddrive.options[harddrive.selectedIndex];
+            laptop.ram = ramOption.text;
+            laptop.harddrive = harddriveOption.text;
+
+            // update budget
+            laptop.budget -= ramCost;
+            console.log("Ramcost here: " + ramCost);
+            laptop.budget -= harddriveCost;
+
+            console.log("HarddriveCost here: " + harddriveCost);
+            console.log("Budget is now: " + laptop.budget);
+
+            // update the budget div
+            document.querySelector("#laptop-budget").innerHTML = '';
+            document.querySelector("#laptop-budget").append('$' + laptop.budget);
+        }
+
+        function completePurchase() {
+            // get select values
+            let ramCost = document.getElementById("ram").value;
+            let harddriveCost = document.getElementById("harddrive").value;
+            window.alert("The laptop purchased has " + laptop.ram + " of ram and " +
+                          laptop.harddrive + " of storage capacity which cost $" +
+                          (Number(ramCost) + Number(harddriveCost)));
         }
     </script>
 </body>
