@@ -16,12 +16,15 @@
         touchArea.addEventListener('touchstart', touchStart);
         touchArea.addEventListener('touchend', touchEnd);
 
-        function touchStart() {
+        function touchStart(ev) {
+            ev.preventDefault();
             console.log("touchstart worked");
+            touchArea.style="background:black; color:white";
         }
 
         function touchEnd() {
             console.log("touchend worked");
+            touchArea.style="background: yellow; color: black";
         }
     </script>
 </body>
