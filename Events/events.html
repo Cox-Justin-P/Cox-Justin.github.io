@@ -8,11 +8,20 @@
     <link rel="stylesheet" type="text/css" href="events.css">
 </head>
 <body>
-   <h1>Touch It...Fast</h1>
-   <button type="button" onclick="message()">No Touch</button>
+    <div id="touchStuff">
+        <h1>Touch Here</h1>
+    </div>
     <script>
-        function message() {
-            window.alert("This only works by clicking"); 
+        let touchArea = document.getElementById('touchStuff');
+        touchArea.addEventListener('touchstart', touchStart);
+        touchArea.addEventListener('touchend', touchEnd);
+
+        function touchStart() {
+            console.log("touchstart worked");
+        }
+
+        function touchEnd() {
+            console.log("touchend worked");
         }
     </script>
 </body>
