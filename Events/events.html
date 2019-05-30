@@ -11,6 +11,13 @@
     <div id="touchStuff">
         <h1>Touch Here</h1>
     </div>
+    <div id="ezA">
+        <p>Give Justin an A?</p>
+        <div id="options">
+                <button type="button" id="yes">Yes</button>
+                <button type="button" id="no">No</button>
+        </div>
+    </div>
     <script>
         let touchArea = document.getElementById('touchStuff');
         touchArea.addEventListener('touchstart', touchStart);
@@ -25,6 +32,10 @@
             console.log("touchend worked");
             touchArea.style="background: yellow; color: black";
         }
+
+        // ez A stuff
+        document.getElementById("ezA").onmousemove = moveDiv;
+
     </script>
 </body>
 </html>

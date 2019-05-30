@@ -3,3 +3,19 @@
     width: 200px;
     border: solid red;
 }
+
+#ezA {
+    text-align: center;
+    margin: auto;
+    width: 200px;
+    height: 100px;
+    border: solid black;
+}
+
+#yes {
+    cursor: pointer;
+}
+
+#no {
+    cursor: pointer;
+}
