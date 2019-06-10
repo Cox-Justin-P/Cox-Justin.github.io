@@ -18,4 +18,11 @@
 
 #no {
     cursor: pointer;
+    /* position: relative;
+    top: 0;
+    transition: top ease 0.5s; */
+}
+
+#no:hover {
+    visibility: hidden;
 }

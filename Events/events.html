@@ -14,8 +14,10 @@
     <div id="ezA">
         <p>Give Justin an A?</p>
         <div id="options">
-                <button type="button" id="yes">Yes</button>
-                <button type="button" id="no">No</button>
+            <div id='yesD'>
+                <button type="button" id="yes" onclick="displayMessage('yes')">Yes</button>
+                <button type="button" id="no" onclick="displayMessage('no')" 
+                        onmouseenter="moveIt('enter')" onmouseout="moveIt('leave')">No</button>
         </div>
     </div>
     <script>
@@ -28,14 +30,33 @@
             console.log("touchstart worked");
             touchArea.style="background:black; color:white";
         }
+
         function touchEnd() {
             console.log("touchend worked");
             touchArea.style="background: yellow; color: black";
         }
 
         // ez A stuff
-        document.getElementById("ezA").onmousemove = moveDiv;
 
+        function displayMessage(answer) {
+            if(answer == 'yes') {
+                console.log("You clicked yes!")
+                window.alert("Thanks for the ez A!");
+            }
+            else {
+                console.log("You clicked no!")
+            }
+        }
+
+        function moveIt(position) {
+            let noButton = document.getElementById('no');
+            if(position == 'enter') {
+                noButton.style="visibility:hidden";
+            }
+            else {
+                 noButton.style="visibility:visible";
+            }
+        }
     </script>
 </body>
 </html>
