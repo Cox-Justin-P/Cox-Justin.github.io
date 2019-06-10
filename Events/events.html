@@ -16,8 +16,14 @@
         <div id="options">
             <div id='yesD'>
                 <button type="button" id="yes" onclick="displayMessage('yes')">Yes</button>
-                <button type="button" id="no" onclick="displayMessage('no')" 
+                <button type="button" id="no" onclick="displayMessage('no')"
                         onmouseenter="moveIt('enter')" onmouseout="moveIt('leave')">No</button>
+        </div>
+    </div>
+    <br><br>
+    <div id="animation">
+        <div id="animateDiv">
+
         </div>
     </div>
     <script>
@@ -41,10 +47,10 @@
         function displayMessage(answer) {
             if(answer == 'yes') {
                 console.log("You clicked yes!")
-                window.alert("Thanks for the ez A!");
+                window.alert("Thanks for the easy A!");
             }
             else {
-                console.log("You clicked no!")
+                console.log("You clicked no!");
             }
         }
 
@@ -52,9 +58,6 @@
             let noButton = document.getElementById('no');
             if(position == 'enter') {
                 noButton.style="visibility:hidden";
-            }
-            else {
-                 noButton.style="visibility:visible";
             }
         }
     </script>
