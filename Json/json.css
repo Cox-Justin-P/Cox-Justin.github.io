@@ -1,0 +1,76 @@
+body {
+    background: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/N13e7awhgiljgescq/videoblocks-black-empty-space-with-stars-dark-science-background-with-movement_rrrhaewqg_thumbnail-full01.png");
+}
+
+#header {
+    color: #1077FE;
+    font-size: 60px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: white;
+}
+
+img {
+    border-radius: 50%;
+}
+
+#astros {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+}
+
+/* OLEG KONONENKO*/
+#oleg {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+}
+#olegPic {
+    width: 300px;
+}
+
+#olegInfo {
+    width: 400px;
+}
+
+/* DAVID ST-JACQUES*/
+#david {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+}
+#davidPic {
+    width: 300px;
+}
+
+#davidInfo {
+    width: 400px;
+}
+
+/* ANNE MCCLAIN */
+#anne {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+}
+#annePic {
+    width: 300px;
+}
+
+#anneInfo {
+    width: 400px;
+}
+
+/* Other astronauts */
+#others {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+}
+
+#otherInfo {
+    width: 400px;
+}
