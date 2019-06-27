@@ -4,86 +4,109 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Space People</title>
+    <title>JSON and Local Storage</title>
     <link rel="stylesheet" type="text/css" href="json.css">
 </head>
 
 <body>
-    <h1 id="header">Astronauts in Space</h1>
-    <div id="astros">
-        <div id="oleg">
-            <div id="olegPic"></div>
-            <div id="olegInfo">
-                <h2>Name:</h2>
-            </div>
-        </div>
-        <div id="david">
-            <div id="davidPic"></div>
-            <div id="davidInfo">
-                <h2>Name:</h2>
-            </div>
-        </div>
-        <div id="anne">
-            <div id="annePic"></div>
-            <div id="anneInfo">
-                <h2>Name:</h2>
-            </div>
-        </div>
-        <div id="others">
-                <div id="otherInfo">
-                    <h2>Others:</h2>
-                </div>
-            </div>
-    </div>
-
+    <h2>These are the current people in Space</h2>
+    <div id="people"></div>
+    <button type="button" onclick="saveToLocalStorage()">Save Data</button><br><br>
+    <button type="button" onclick="viewLocalStorage()">View Local Storage</button>
+    <h3>Here is what is in local storage</h3>
+    <div id="local-storage"></div>
+    <button type="button" onclick="removeStorage()">Remove Data</button>
     <script>
-        fetch('http://api.open-notify.org/astros.json').then(response => {
-            return response.json();
+        // global astro variable for easy access to data
+        var astro;
+
+        // get the Json data
+        fetch('http://api.open-notify.org/astros.json')
+        .then(response => {
+            return response.json()
         }).then(data => {
+            // make sure we are getting the data
             console.log(data);
-            for (let i = 0; i < data.number; i++) {
-                if (data.people[i].name == "Oleg Kononenko") {
-                    document.querySelector("#oleg").appendChild(createAstronaut(data.people[i]));
-                    let imgOleg = document.createElement("img");
-                    imgOleg.src =
-                        "https://www.nasa.gov/sites/default/files/styles/946xvariable_height/public/jsc2014e088156.jpg?itok=zDabZ-ok";
-                    imgOleg.height = 300;
-                    imgOleg.width = 250;
-                    document.querySelector("#oleg").append(imgOleg);
 
-                } else if (data.people[i].name == "David Saint-Jacques") {
-                    document.querySelector("#david").appendChild(createAstronaut(data.people[i]));
-                    let imgDavid = document.createElement("img");
-                    imgDavid.src =
-                        "http://www.asc-csa.gc.ca/images/recherche/tiles/5f594103-dcf2-4e1d-bf95-b0bd43e9f6f1.jpg";
-                    imgDavid.height = 300;
-                    imgDavid.width = 250;
-                    document.querySelector("#david").append(imgDavid);
+            // assign data for local storage purposes
+            astro = data;
 
-                } else if (data.people[i].name == "Anne McClain") {
-                    document.querySelector("#anne").appendChild(createAstronaut(data.people[i]));
-                    let imgAnne = document.createElement("img");
-                    imgAnne.src = "http://www.spacefacts.de/bios/portraits/astronauts/mcclain_anne.jpg";
-                    imgAnne.height = 300;
-                    imgAnne.width = 250;
-                    document.querySelector("#anne").appendChild(imgAnne);
-                } else {
-                    console.log("The remaining names are: " + data.people[i].name);
-                    document.querySelector("#otherInfo").appendChild(createAstronaut(data.people[i]));
-                }
-
+            // loop through the names of the astros
+            // and then add each person to the div
+            for(let i = 0; i < data.number; i++) {
+                console.log(data.people[i].name);
+                addPerson(data.people[i].name);
             }
-            console.log(data);
-            console.log(data.people[0].name);
         });
 
-        function createAstronaut(astro) {
-        console.log(astro.name);
-        const item = document.createElement("p");
-        item.innerHTML = `<h2> ${astro.name} </h2>`;
+        function addPerson(name) {
+            // create a ol element
+            let ul = document.createElement('ul');
 
-        return item;
-    }
+            //create li person element
+            let person = document.createElement('li');
+
+            // assign the person li element the value of the current astros name
+            person.appendChild(document.createTextNode(name));
+
+            // append the name to the unordered list
+            ul.appendChild(person);
+
+            // append unoredered list value to the people div
+            document.querySelector("#people").append(ul);
+        }
+
+        function viewLocalStorage() {
+
+            let errorMessage = "Data is not found in local storage.";
+                
+                // display the astros in local storage
+                for (let i = 0; i < astro.number; i++) {
+                    // new line element
+                    let newLine = document.createElement('br');
+                    
+                    if(localStorage.getItem(i) == null)
+                    {
+                        document.querySelector("#local-storage").append(errorMessage, newLine);
+                        return;
+                    } else {
+                        
+                        // create items array
+                        let newItem = [];
+                        
+                        // assign element of what's in local storage via the key value of 'names'
+                        newItem[i] = localStorage.getItem(i);
+                        
+                        // append data to div
+                        document.querySelector("#local-storage").append(newItem[i], newLine);
+                    }
+            }
+        }
+
+        function saveToLocalStorage() {
+            // check to make sure we have the data
+            console.log(astro);
+
+            // clear the div
+            document.querySelector("#local-storage").innerHTML = '';
+
+            // add the astros to local storage
+            for (let i = 0; i < astro.number; i++) {
+                // store the data
+                localStorage.setItem(i, astro.people[i].name);
+            }
+
+            viewLocalStorage();
+        }
+
+        function removeStorage() {
+            // clear the storage
+            localStorage.clear();
+
+            // remove the corresponding elements
+            document.querySelector("#local-storage").innerHTML = '';
+            viewLocalStorage();
+        }
     </script>
 </body>
 

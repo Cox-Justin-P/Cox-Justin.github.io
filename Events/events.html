@@ -27,6 +27,8 @@
         </div>
     </div>
     <script>
+
+        //touch events
         let touchArea = document.getElementById('touchStuff');
         touchArea.addEventListener('touchstart', touchStart);
         touchArea.addEventListener('touchend', touchEnd);
@@ -43,7 +45,6 @@
         }
 
         // ez A stuff
-
         function displayMessage(answer) {
             if(answer == 'yes') {
                 console.log("You clicked yes!")
@@ -54,6 +55,7 @@
             }
         }
 
+        
         function moveIt(position) {
             let noButton = document.getElementById('no');
             if(position == 'enter') {
