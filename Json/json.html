@@ -16,8 +16,49 @@
     <button type="button" onclick="viewLocalStorage()">View Local Storage</button>
     <h3>Here is what is in local storage</h3>
     <div id="local-storage"></div>
-    <button type="button" onclick="removeStorage()">Remove Data</button>
+    <button type="button" onclick="removeStorage()">Remove Data</button><br><br>
+    <h4>Here is what stringify looks like:</h4>
+    <div id="stringified"></div>
+    <h4>Here is an example of using parsed data:</h4>
+    <div id="parsed"></div>
     <script>
+
+        // create a json object for parsing
+        let astroData = {
+        "people": [
+            {
+            "craft": "ISS",
+            "name": "Alexey Ovchinin"
+            },
+            {
+            "craft": "ISS",
+            "name": "Nick Hague"
+            },
+            {
+            "craft": "ISS",
+            "name": "Christina Koch"
+            }
+        ],
+        "number": 3,
+        "message": "success"
+        }
+
+        // stringify first
+        let stringedData = JSON.stringify(astroData);
+        document.querySelector("#stringified").innerHTML = stringedData;
+
+        // parse the data into an object
+       let parsedData = JSON.parse(stringedData);
+       document.querySelector("#parsed").innerHTML = "There are " + parsedData.number + " people in space " + 
+                                                     "one of which is " + parsedData.people[0].name +
+                                                     ". They are all aboard the " + parsedData.people[0].craft + ".";
+
+        // log the data
+        console.log("Stringed data is " + stringedData);
+        console.log("Parsed data is " + parsedData);
+        console.log(parsedData.number);
+
+
         // global astro variable for easy access to data
         var astro;
 
@@ -28,6 +69,14 @@
         }).then(data => {
             // make sure we are getting the data
             console.log(data);
+
+            // parse the data to an object
+            //let astroData = JSON.parse(data);
+
+            // check that the object has the data
+            //console.log("Astro data contains " + astroData);
+
+            // display the data in a div as an object
 
             // assign data for local storage purposes
             astro = data;
