@@ -23,9 +23,28 @@
                 <source src="motivation_audio.mp3" type="audio/mp3">
             </audio>
         </div>
+        <h2>Reminder to Keep Smiling!</h2>
         <div id="mediaCanvas">
             <canvas id="myCanvas"></canvas>
         </div>
     </div>
+
+    <script>
+        let canvas = document.querySelector("canvas");
+        let c = canvas.getContext('2d');
+
+        c.beginPath();
+        c.arc(95, 50, 30, 0, 2 * Math.PI);  // left eye
+        c.moveTo(100, 50);
+        c.arc(95, 50, 5, 0, 2 * Math.PI);   // left pupil
+        c.moveTo(230, 50);
+        c.arc(200, 50, 30, 0, 2 * Math.PI); // right eye
+        c.moveTo(205, 50);
+        c.arc(200, 50, 5, 0, 2 * Math.PI);  // right pupil
+        c.moveTo(185, 100);
+        c.arc(145, 100, 40, 0, Math.PI);    // smile
+        
+        c.stroke();
+    </script>
 </body>
 </html>
